@@ -12,61 +12,61 @@ namespace ExcelComparison
             Directory.CreateDirectory("Assets");
             using (var wb = new XLWorkbook())
             {
-                var ws = wb.AddWorksheet("Daten");
+                var ws = wb.AddWorksheet("Data");
                 
-                // Demo-Platzhalter
-                ws.Cell(1, 1).Value = "Fahrzeugschein:";
-                ws.Cell(1, 2).Value = "##Fahrzeugschein##";
-                ws.Cell(2, 1).Value = "Armaturen:";
-                ws.Cell(2, 2).Value = "##Armaturen##";
-                ws.Cell(3, 1).Value = "MangelbeschreibungSB:";
-                ws.Cell(3, 2).Value = "##MangelbeschreibungSB##";
-                ws.Cell(4, 1).Value = "Datum:";
-                ws.Cell(4, 2).Value = "##Datum##";
+                // Demo placeholders
+                ws.Cell(1, 1).Value = "Vehicle Registration:";
+                ws.Cell(1, 2).Value = "##VehicleRegistration##";
+                ws.Cell(2, 1).Value = "Dashboard:";
+                ws.Cell(2, 2).Value = "##Dashboard##";
+                ws.Cell(3, 1).Value = "Defect Description:";
+                ws.Cell(3, 2).Value = "##DefectDescription##";
+                ws.Cell(4, 1).Value = "Date:";
+                ws.Cell(4, 2).Value = "##Date##";
                 
-                // Benchmark-Platzhalter (Firmeninformationen)
-                ws.Cell(1, 4).Value = "Firmenname:";
-                ws.Cell(1, 5).Value = "##Firmenname##";
-                ws.Cell(2, 4).Value = "Geschäftsführer:";
-                ws.Cell(2, 5).Value = "##Geschäftsführer##";
-                ws.Cell(3, 4).Value = "Standort:";
-                ws.Cell(3, 5).Value = "##Standort##";
-                ws.Cell(4, 4).Value = "Mitarbeiter:";
-                ws.Cell(4, 5).Value = "##Mitarbeiter##";
-                ws.Cell(5, 4).Value = "Jahr:";
-                ws.Cell(5, 5).Value = "##Jahr##";
-                ws.Cell(6, 4).Value = "Bemerkungen:";
-                ws.Cell(6, 5).Value = "##Bemerkungen##";
+                // Benchmark placeholders (Company information)
+                ws.Cell(1, 4).Value = "Company Name:";
+                ws.Cell(1, 5).Value = "##CompanyName##";
+                ws.Cell(2, 4).Value = "CEO:";
+                ws.Cell(2, 5).Value = "##CEO##";
+                ws.Cell(3, 4).Value = "Location:";
+                ws.Cell(3, 5).Value = "##Location##";
+                ws.Cell(4, 4).Value = "Employees:";
+                ws.Cell(4, 5).Value = "##Employees##";
+                ws.Cell(5, 4).Value = "Year:";
+                ws.Cell(5, 5).Value = "##Year##";
+                ws.Cell(6, 4).Value = "Remarks:";
+                ws.Cell(6, 5).Value = "##Remarks##";
                 
-                // Quartalsübersicht
-                ws.Cell(6, 1).Value = "Quartal";
-                ws.Cell(6, 2).Value = "Umsatz";
-                ws.Cell(6, 3).Value = "Gewinn";
-                ws.Cell(6, 4).Value = "Kosten";
-                ws.Cell(6, 5).Value = "Marge (%)";
+                // Quarterly overview
+                ws.Cell(6, 1).Value = "Quarter";
+                ws.Cell(6, 2).Value = "Revenue";
+                ws.Cell(6, 3).Value = "Profit";
+                ws.Cell(6, 4).Value = "Costs";
+                ws.Cell(6, 5).Value = "Margin (%)";
                 ws.Cell(7, 1).Value = "Q1";
-                ws.Cell(7, 2).Value = "##Umsatz_Q1##";
-                ws.Cell(7, 3).Value = "##Gewinn_Q1##";
-                ws.Cell(7, 4).Value = "##Kosten_Q1##";
-                ws.Cell(7, 5).Value = "##Marge_Q1##";
+                ws.Cell(7, 2).Value = "##Revenue_Q1##";
+                ws.Cell(7, 3).Value = "##Profit_Q1##";
+                ws.Cell(7, 4).Value = "##Costs_Q1##";
+                ws.Cell(7, 5).Value = "##Margin_Q1##";
                 ws.Cell(8, 1).Value = "Q2";
-                ws.Cell(8, 2).Value = "##Umsatz_Q2##";
-                ws.Cell(8, 3).Value = "##Gewinn_Q2##";
-                ws.Cell(8, 4).Value = "##Kosten_Q2##";
-                ws.Cell(8, 5).Value = "##Marge_Q2##";
+                ws.Cell(8, 2).Value = "##Revenue_Q2##";
+                ws.Cell(8, 3).Value = "##Profit_Q2##";
+                ws.Cell(8, 4).Value = "##Costs_Q2##";
+                ws.Cell(8, 5).Value = "##Margin_Q2##";
                 ws.Cell(9, 1).Value = "Q3";
-                ws.Cell(9, 2).Value = "##Umsatz_Q3##";
-                ws.Cell(9, 3).Value = "##Gewinn_Q3##";
-                ws.Cell(9, 4).Value = "##Kosten_Q3##";
-                ws.Cell(9, 5).Value = "##Marge_Q3##";
+                ws.Cell(9, 2).Value = "##Revenue_Q3##";
+                ws.Cell(9, 3).Value = "##Profit_Q3##";
+                ws.Cell(9, 4).Value = "##Costs_Q3##";
+                ws.Cell(9, 5).Value = "##Margin_Q3##";
                 ws.Cell(10, 1).Value = "Q4";
-                ws.Cell(10, 2).Value = "##Umsatz_Q4##";
-                ws.Cell(10, 3).Value = "##Gewinn_Q4##";
-                ws.Cell(10, 4).Value = "##Kosten_Q4##";
-                ws.Cell(10, 5).Value = "##Marge_Q4##";
+                ws.Cell(10, 2).Value = "##Revenue_Q4##";
+                ws.Cell(10, 3).Value = "##Profit_Q4##";
+                ws.Cell(10, 4).Value = "##Costs_Q4##";
+                ws.Cell(10, 5).Value = "##Margin_Q4##";
                 
-                // Projektstatus
-                ws.Cell(12, 1).Value = "Projekt";
+                // Project status
+                ws.Cell(12, 1).Value = "Project";
                 ws.Cell(12, 2).Value = "Status";
                 ws.Cell(12, 3).Value = "Budget";
                 ws.Cell(13, 1).Value = "A";

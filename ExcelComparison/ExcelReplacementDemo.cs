@@ -9,40 +9,40 @@ public class ExcelReplacementDemo
 {
     public static void RunDemo()
     {
-        // Sicherstellen, dass die Vorlage existiert
+        // Ensure template exists
         ExcelTemplateGenerator.EnsureTemplateExists();
         Console.WriteLine("=== Excel Replacement Demo ===");
         Console.WriteLine();
 
-        // Alle Variablen abfragen
-        Console.WriteLine("Bitte Wert für 'Fahrzeugschein' eingeben:");
-        var fahrzeugschein = Console.ReadLine();
-        Console.WriteLine("Bitte Wert für 'Armaturen' eingeben:");
-        var armaturen = Console.ReadLine();
-        Console.WriteLine("Bitte Wert für 'MangelbeschreibungSB' eingeben:");
-        var mangelbeschreibungSb = Console.ReadLine();
-        Console.WriteLine("Bitte Wert für 'Umsatz Q1' eingeben:");
-        var umsatzQ1 = Console.ReadLine();
-        Console.WriteLine("Bitte Wert für 'Gewinn Q1' eingeben:");
-        var gewinnQ1 = Console.ReadLine();
-        Console.WriteLine("Bitte Wert für 'Status A' eingeben:");
+        // Collect all variables
+        Console.WriteLine("Please enter value for 'Vehicle Registration':");
+        var vehicleRegistration = Console.ReadLine();
+        Console.WriteLine("Please enter value for 'Dashboard':");
+        var dashboard = Console.ReadLine();
+        Console.WriteLine("Please enter value for 'Defect Description':");
+        var defectDescription = Console.ReadLine();
+        Console.WriteLine("Please enter value for 'Revenue Q1':");
+        var revenueQ1 = Console.ReadLine();
+        Console.WriteLine("Please enter value for 'Profit Q1':");
+        var profitQ1 = Console.ReadLine();
+        Console.WriteLine("Please enter value for 'Status A':");
         var statusA = Console.ReadLine();
-        Console.WriteLine("Bitte Wert für 'Budget A' eingeben:");
+        Console.WriteLine("Please enter value for 'Budget A':");
         var budgetA = Console.ReadLine();
 
         var fileId = Guid.NewGuid();
         // Demo OpenXML SDK
-        DemoOpenXmlSdk(fileId, fahrzeugschein, armaturen, mangelbeschreibungSb, umsatzQ1, gewinnQ1, statusA, budgetA);
+        DemoOpenXmlSdk(fileId, vehicleRegistration, dashboard, defectDescription, revenueQ1, profitQ1, statusA, budgetA);
         // Demo ClosedXML
-        DemoClosedXml(fileId, fahrzeugschein, armaturen, mangelbeschreibungSb, umsatzQ1, gewinnQ1, statusA, budgetA);
+        DemoClosedXml(fileId, vehicleRegistration, dashboard, defectDescription, revenueQ1, profitQ1, statusA, budgetA);
         Console.WriteLine();
-        Console.WriteLine("Demo abgeschlossen!");
-        Console.WriteLine($"Dateien generiert:");
+        Console.WriteLine("Demo completed!");
+        Console.WriteLine($"Files generated:");
         Console.WriteLine($"- {fileId}_OpenXML.xlsx");
         Console.WriteLine($"- {fileId}_ClosedXML.xlsx");
     }
 
-    private static void DemoOpenXmlSdk(Guid fileId, string? fahrzeugschein, string? armaturen, string? mangelbeschreibungSb, string? umsatzQ1, string? gewinnQ1, string? statusA, string? budgetA)
+    private static void DemoOpenXmlSdk(Guid fileId, string? vehicleRegistration, string? dashboard, string? defectDescription, string? revenueQ1, string? profitQ1, string? statusA, string? budgetA)
     {
         var fileName = $"{fileId}_OpenXML.xlsx";
         File.Copy("Assets/Template.xlsx", fileName, true);
@@ -69,32 +69,32 @@ public class ExcelReplacementDemo
                         int id = int.Parse(cell.CellValue.InnerText);
                         SharedStringItem cellTextItem = workbookPart!.SharedStringTablePart!.SharedStringTable.Elements<SharedStringItem>().ElementAt(id);
                         string text = cellTextItem.InnerText;
-                        text = text.Replace("##Fahrzeugschein##", fahrzeugschein ?? "Default1")
-                            .Replace("##Armaturen##", armaturen ?? "Default2")
-                            .Replace("##MangelbeschreibungSB##", mangelbeschreibungSb ?? "Default3")
-                            .Replace("##Datum##", DateTime.Now.ToString("dd.MM.yyyy"))
-                            .Replace("##Umsatz_Q1##", umsatzQ1 ?? "450.000")
-                            .Replace("##Gewinn_Q1##", gewinnQ1 ?? "85.000")
-                            .Replace("##Kosten_Q1##", "365.000")
-                            .Replace("##Marge_Q1##", "18.9")
-                            .Replace("##Umsatz_Q2##", "520.000")
-                            .Replace("##Gewinn_Q2##", "95.000")
-                            .Replace("##Kosten_Q2##", "425.000")
-                            .Replace("##Marge_Q2##", "18.3")
-                            .Replace("##Umsatz_Q3##", "580.000")
-                            .Replace("##Gewinn_Q3##", "110.000")
-                            .Replace("##Kosten_Q3##", "470.000")
-                            .Replace("##Marge_Q3##", "19.0")
-                            .Replace("##Umsatz_Q4##", "620.000")
-                            .Replace("##Gewinn_Q4##", "125.000")
-                            .Replace("##Kosten_Q4##", "495.000")
-                            .Replace("##Marge_Q4##", "20.2")
-                            .Replace("##Status_A##", statusA ?? "Abgeschlossen")
-                            .Replace("##Budget_A##", budgetA ?? "75.000")
-                            .Replace("##Status_B##", "In Bearbeitung")
-                            .Replace("##Budget_B##", "120.000")
-                            .Replace("##Status_C##", "Geplant")
-                            .Replace("##Budget_C##", "200.000");
+                        text = text.Replace("##VehicleRegistration##", vehicleRegistration ?? "DefaultVehicle")
+                            .Replace("##Dashboard##", dashboard ?? "DefaultDashboard")
+                            .Replace("##DefectDescription##", defectDescription ?? "DefaultDefect")
+                            .Replace("##Date##", DateTime.Now.ToString("MM/dd/yyyy"))
+                            .Replace("##Revenue_Q1##", revenueQ1 ?? "450,000")
+                            .Replace("##Profit_Q1##", profitQ1 ?? "85,000")
+                            .Replace("##Costs_Q1##", "365,000")
+                            .Replace("##Margin_Q1##", "18.9")
+                            .Replace("##Revenue_Q2##", "520,000")
+                            .Replace("##Profit_Q2##", "95,000")
+                            .Replace("##Costs_Q2##", "425,000")
+                            .Replace("##Margin_Q2##", "18.3")
+                            .Replace("##Revenue_Q3##", "580,000")
+                            .Replace("##Profit_Q3##", "110,000")
+                            .Replace("##Costs_Q3##", "470,000")
+                            .Replace("##Margin_Q3##", "19.0")
+                            .Replace("##Revenue_Q4##", "620,000")
+                            .Replace("##Profit_Q4##", "125,000")
+                            .Replace("##Costs_Q4##", "495,000")
+                            .Replace("##Margin_Q4##", "20.2")
+                            .Replace("##Status_A##", statusA ?? "Completed")
+                            .Replace("##Budget_A##", budgetA ?? "75,000")
+                            .Replace("##Status_B##", "In Progress")
+                            .Replace("##Budget_B##", "120,000")
+                            .Replace("##Status_C##", "Planned")
+                            .Replace("##Budget_C##", "200,000");
                         cellTextItem.GetFirstChild<Text>()!.Text = text;
                     }
                 }
@@ -105,7 +105,7 @@ public class ExcelReplacementDemo
         Console.WriteLine($"Replacement completed in {stopwatch.ElapsedMilliseconds} ms using Open XML SDK!");
     }
 
-    private static void DemoClosedXml(Guid fileId, string? fahrzeugschein, string? armaturen, string? mangelbeschreibungSb, string? umsatzQ1, string? gewinnQ1, string? statusA, string? budgetA)
+    private static void DemoClosedXml(Guid fileId, string? vehicleRegistration, string? dashboard, string? defectDescription, string? revenueQ1, string? profitQ1, string? statusA, string? budgetA)
     {
         var fileName = $"{fileId}_ClosedXML.xlsx";
         File.Copy("Assets/Template.xlsx", fileName, true);
@@ -119,32 +119,32 @@ public class ExcelReplacementDemo
             {
                 if (cell.HasFormula) continue;
                 var value = cell.GetString();
-                value = value.Replace("##Fahrzeugschein##", fahrzeugschein ?? "Default1")
-                             .Replace("##Armaturen##", armaturen ?? "Default2")
-                             .Replace("##MangelbeschreibungSB##", mangelbeschreibungSb ?? "Default3")
-                             .Replace("##Datum##", DateTime.Now.ToString("dd.MM.yyyy"))
-                             .Replace("##Umsatz_Q1##", umsatzQ1 ?? "450.000")
-                             .Replace("##Gewinn_Q1##", gewinnQ1 ?? "85.000")
-                             .Replace("##Kosten_Q1##", "365.000")
-                             .Replace("##Marge_Q1##", "18.9")
-                             .Replace("##Umsatz_Q2##", "520.000")
-                             .Replace("##Gewinn_Q2##", "95.000")
-                             .Replace("##Kosten_Q2##", "425.000")
-                             .Replace("##Marge_Q2##", "18.3")
-                             .Replace("##Umsatz_Q3##", "580.000")
-                             .Replace("##Gewinn_Q3##", "110.000")
-                             .Replace("##Kosten_Q3##", "470.000")
-                             .Replace("##Marge_Q3##", "19.0")
-                             .Replace("##Umsatz_Q4##", "620.000")
-                             .Replace("##Gewinn_Q4##", "125.000")
-                             .Replace("##Kosten_Q4##", "495.000")
-                             .Replace("##Marge_Q4##", "20.2")
-                             .Replace("##Status_A##", statusA ?? "Abgeschlossen")
-                             .Replace("##Budget_A##", budgetA ?? "75.000")
-                             .Replace("##Status_B##", "In Bearbeitung")
-                             .Replace("##Budget_B##", "120.000")
-                             .Replace("##Status_C##", "Geplant")
-                             .Replace("##Budget_C##", "200.000");
+                value = value.Replace("##VehicleRegistration##", vehicleRegistration ?? "DefaultVehicle")
+                             .Replace("##Dashboard##", dashboard ?? "DefaultDashboard")
+                             .Replace("##DefectDescription##", defectDescription ?? "DefaultDefect")
+                             .Replace("##Date##", DateTime.Now.ToString("MM/dd/yyyy"))
+                             .Replace("##Revenue_Q1##", revenueQ1 ?? "450,000")
+                             .Replace("##Profit_Q1##", profitQ1 ?? "85,000")
+                             .Replace("##Costs_Q1##", "365,000")
+                             .Replace("##Margin_Q1##", "18.9")
+                             .Replace("##Revenue_Q2##", "520,000")
+                             .Replace("##Profit_Q2##", "95,000")
+                             .Replace("##Costs_Q2##", "425,000")
+                             .Replace("##Margin_Q2##", "18.3")
+                             .Replace("##Revenue_Q3##", "580,000")
+                             .Replace("##Profit_Q3##", "110,000")
+                             .Replace("##Costs_Q3##", "470,000")
+                             .Replace("##Margin_Q3##", "19.0")
+                             .Replace("##Revenue_Q4##", "620,000")
+                             .Replace("##Profit_Q4##", "125,000")
+                             .Replace("##Costs_Q4##", "495,000")
+                             .Replace("##Margin_Q4##", "20.2")
+                             .Replace("##Status_A##", statusA ?? "Completed")
+                             .Replace("##Budget_A##", budgetA ?? "75,000")
+                             .Replace("##Status_B##", "In Progress")
+                             .Replace("##Budget_B##", "120,000")
+                             .Replace("##Status_C##", "Planned")
+                             .Replace("##Budget_C##", "200,000");
                 cell.Value = value;
             }
             workbook.Save();
